@@ -306,7 +306,7 @@ int main(){
         }
         fileInput.close();
     }
-    auto start = std::chrono::high_resolution_clock::now();
+    
 
     pattern.erase(pattern.begin());
     
@@ -314,7 +314,7 @@ int main(){
         string str = soal[i];
         soal[i] = removeSpace(str);
     }
-    
+    auto start = std::chrono::high_resolution_clock::now();
     bool sameWord = false;
     for (int i = 0; i < pattern.size(); i++){
         sameWord = false;
@@ -461,14 +461,15 @@ int main(){
         }
         jmlPerbandingan.push_back(Count);
     }
+    auto finish = std::chrono::high_resolution_clock::now();
 
     for(int i = 0; i <pattern.size(); i++){
         DisplayAnswer(soal,answers[i],pattern[i],jmlPerbandingan[i]);
     }
 
-    auto finish = std::chrono::high_resolution_clock::now();
+    
     std::chrono::duration<double> elapsed = finish - start;
-    std::cout << "Lama waktu mengeksekusi program : " << elapsed.count() << " s\n";
+    std::cout << "Lama waktu mengeksekusi program (algoritma string matching) : " << elapsed.count()*1000 << " ms\n";
 
     
     return 0;
